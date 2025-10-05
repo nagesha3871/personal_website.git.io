@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nagesha G | Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --main-bg:#141B25;
+  --card-bg:#1E2633;
+  --primary:#27efb6;
+  --secondary:#ffe873;
+  --accent:#4be1ec;
+  --text:#f6f7fa;
+  --subdued:#c2c8d0;
+  --line:#27efb655;
+}
+
+*{box-sizing:border-box;margin:0;padding:0;}
+body{
+  font-family:'Poppins',Arial,sans-serif;
+  background:linear-gradient(130deg,#171d29 0%,#232f3e 100%);
+  color:var(--text);
+  min-height:100vh;
+  overflow-x:hidden;
+  scroll-behavior:smooth;
+  padding-top:80px;
+}
+
+header{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1rem 3vw;background: rgba(20,27,37,0.95);
+  border-bottom:2px solid var(--line);
+  position:fixed;top:0;width:100%;z-index:1000;
+}
+
+.logo-area{display:flex;align-items:center;gap:0.8rem;}
+.logo-circle{
+  width:50px;height:50px;border-radius:50%;background:var(--primary);
+  display:flex;justify-content:center;align-items:center;font-weight:700;font-size:1.4rem;color:#141B25;
+  box-shadow:0 2px 15px var(--primary);
+}
+.logo-area span{font-size:1.4rem;font-weight:700;color:var(--primary);}
+
+.header-controls{display:flex;align-items:center;gap:1em;}
+.hamburger{
+  width:30px;height:22px;display:flex;flex-direction:column;justify-content:space-between;
+  cursor:pointer;
+}
+.hamburger div{
+  height:4px;background:var(--primary);border-radius:2px;transition:0.3s;
+}
+
+#menuDropdown{
+  position:absolute;top:60px;right:10px;background:var(--card-bg);border-radius:10px;padding:1em;display:none;flex-direction:column;gap:0.7em;box-shadow:0 4px 15px #27efb633;
+}
+#menuDropdown a{color:var(--text);text-decoration:none;font-weight:500;transition:color 0.2s;}
+#menuDropdown a:hover{color:var(--primary);}
+
+.toggle-dark{
+  background:var(--card-bg);border:none;border-radius:16px;cursor:pointer;color:var(--primary);
+  font-size:1.2rem;padding:0.4em 0.8em;box-shadow:0 2px 7px #27efb655;transition:all 0.3s;
+}
+
+.main{max-width:1000px;margin:auto;padding:2em 5vw;}
+section{
+  margin-bottom:2.5em;background:rgba(30,38,51,0.85);
+  border-radius:15px;box-shadow:0 3px 20px #27efb613;padding:1.8rem 2rem;
+  border:2px solid var(--line);opacity:0;transform:translateY(50px);transition: all 0.8s ease-out;
+  scroll-margin-top:90px;
+}
+section.active{opacity:1;transform:translateY(0);}
+h1,h2,h3{color:var(--secondary);font-weight:700;margin-bottom:0.5em;letter-spacing:1px;}
+h1{font-size:2rem;} h2{font-size:1.5rem;} h3{font-size:1.15rem;}
+
+.subtext{font-size:1em;color:var(--subdued);margin-top:0.2em;margin-bottom:1em;}
+
+.skills-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.2em;margin-top:1em;}
+.skill-card{background:#232f3e;padding:1em 1.2em;border-radius:11px;box-shadow:0 2px 8px #27efb63d;margin-bottom:0.4em;}
+.skill-title{font-weight:600;color:var(--accent);margin-bottom:0.5em;}
+.progress-bg{width:100%;height:8px;background:#232f3e;border-radius:4px;margin:2px 0;overflow:hidden;}
+.progress-bar{height:100%;border-radius:4px;transition:width 0.7s;}
+.prog-green{background:linear-gradient(90deg,#27efb6,#4be1ec);}
+.prog-blue{background:linear-gradient(90deg,#5ec6f6,#176e99);}
+.prog-yellow{background:linear-gradient(90deg,#ffe873,#ffb900);}
+
+.item-title{color:var(--primary);font-weight:600;font-size:1.1em;}
+.item-details{color:var(--text);margin-left:1em;margin-top:0.15em;margin-bottom:0.6em;font-size:0.95em;}
+.edu-list li{color:var(--text);margin-bottom:0.4em;}
+
+form label{display:block;margin-top:12px;color:var(--text);}
+form input,form textarea{width:95%;background:#222b37;color:#e2e2e2;padding:10px;border-radius:7px;border:none;margin-top:5px;}
+form input:focus,form textarea:focus{outline:none;background:#1b2430;}
+form button{background:var(--primary);color:#141B25;border:none;border-radius:7px;padding:12px 26px;margin-top:12px;cursor:pointer;font-weight:600;font-size:1em;transition:all 0.3s;}
+form button:hover{background:var(--secondary);}
+.success{color:var(--secondary);margin-top:10px;text-align:center;}
+footer{text-align:center;color:var(--subdued);margin:20px 0;}
+@media(max-width:600px){.main{padding:1.5em 2vw;}section{padding:1em 1em;}header{flex-direction:column;gap:0.7em;}}
+
+/* Background lighting */
+body:before{
+  content:'';
+  position:fixed;
+  z-index:-1;
+  left:-12vw;top:-16vw;width:160vw;height:160vw;
+  background:repeating-linear-gradient(120deg,#27efb61e 0px,#27efb61e 4px,transparent 12px,transparent 48px);
+  opacity:.15;
+  animation:moveBG 24s linear infinite alternate;
+  pointer-events:none;
+}
+@keyframes moveBG{0%{transform:translateY(0);}100%{transform:translateY(40px);}}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo-area"><div class="logo-circle">N</div><span>Nagesha G</span></div>
+  <div class="header-controls">
+    <div class="hamburger" id="hamburgerBtn">
+      <div></div><div></div><div></div>
+    </div>
+    <button class="toggle-dark" id="themeToggler" title="Toggle Light/Dark">🌙</button>
+  </div>
+  <div id="menuDropdown">
+    <a href="#about">About</a>
+    <a href="#education">Education</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#certificates">Certificates</a>
+    <a href="#contact">Contact</a>
+  </div>
+</header>
+
+<main class="main">
+ <!-- About Me -->
+ <section id="about">
+  <h1>About Me</h1>
+  <span class="subtext">
+    I am a student passionate about the software field, constantly learning and exploring new technologies to improve my skills and build meaningful projects.
+  </span>
+  <span class="subtext">
+    I enjoy problem-solving, coding, and collaborating with others to create innovative solutions. My goal is to contribute to impactful projects and grow as a developer.  
+  </span>
+</section>
+
+<!-- Education -->
+<section id="education">
+  <h2>Education</h2>
+  <ul class="edu-list">
+    <li><div class="item-title">BCA (Pursuing)</div><div class="item-details">Bengaluru North University, CGPA: 9.11</div></li>
+    <li><div class="item-title">PUC</div><div class="item-details">Blooms PU College - 96.5%</div></li>
+    <li><div class="item-title">10th</div><div class="item-details">Adharsha Vidhyalaya - 95%</div></li>
+  </ul>
+</section>
+
+<!-- Skills -->
+<section id="skills">
+  <h2>Technical & Creative Skills</h2>
+  <div class="skills-cards">
+    <div class="skill-card">
+      <div class="skill-title">Programming</div>
+      <div>C - 79%</div><div class="progress-bg"><div class="progress-bar prog-green" style="width:79%"></div></div>
+      <div>Java - 82%</div><div class="progress-bg"><div class="progress-bar prog-blue" style="width:82%"></div></div>
+      <div>Python - 86%</div><div class="progress-bg"><div class="progress-bar prog-yellow" style="width:86%"></div></div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-title">Web & Design</div>
+      <div>HTML - 90%</div><div class="progress-bg"><div class="progress-bar prog-green" style="width:90%"></div></div>
+      <div>CSS - 88%</div><div class="progress-bg"><div class="progress-bar prog-blue" style="width:88%"></div></div>
+      <div>JavaScript - 85%</div><div class="progress-bg"><div class="progress-bar prog-yellow" style="width:85%"></div></div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-title">Networking & OS</div>
+      <div>Networking - 82%</div><div class="progress-bg"><div class="progress-bar prog-green" style="width:80%"></div></div>
+      <div>Operating System - 62%</div><div class="progress-bg"><div class="progress-bar prog-blue" style="width:82%"></div></div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-title">Creative Skills</div>
+      <div>Photo Editing - 75%</div><div class="progress-bg"><div class="progress-bar prog-green" style="width:85%"></div></div>
+      <div>Video Editing - 60%</div><div class="progress-bg"><div class="progress-bar prog-blue" style="width:80%"></div></div>
+      <div>Poster Designing - 88%</div><div class="progress-bg"><div class="progress-bar prog-yellow" style="width:88%"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- Projects -->
+<section id="projects">
+  <h2>Projects</h2>
+  <ul class="exp-list">
+    <li><div class="item-title">Simple Money Management</div><div class="item-details">Project aimed at helping users manage personal finances efficiently.</div></li>
+    <li><div class="item-title">Nexa Core Application</div><div class="item-details">A professional web application integrating modern UI, user-friendly design, and backend functionalities.</div></li>
+    <li><div class="item-title">Simple Jarvis Style Voice Assistant</div><div class="item-details">An interactive voice assistant with dynamic responses and smart control features.</div></li>
+    <li><div class="item-title">Multi-Platform Media Downloader</div><div class="item-details">A Python-based tool to download videos, images, and audio from multiple platforms efficiently.</div></li>
+  </ul>
+</section>
+
+<!-- Certificates -->
+<section id="certificates">
+  <h2>Certificates</h2>
+  <ul class="edu-list">
+    <li><div class="item-title">Python Certification - GeeksforGeeks</div></li>
+    <li><div class="item-title">C Embedded - Simplilearn</div></li>
+    <li><div class="item-title">Java for Beginners - Great Learning</div></li>
+    <li><div class="item-title">MySQL - Great Learning</div></li>
+  </ul>
+</section>
+
+<!-- Contact -->
+<section id="contact">
+  <h2>Contact Me</h2>
+  <ul class="edu-list">
+    <li>Phone: +91 7411013871</li>
+    <li>Email: nagesha3103@gmail.com</li>
+    <li>Place: Chikkaballapur</li>
+    <li>LinkedIn: <a href="https://www.linkedin.com/in/nagesha-g-33b412292in" target="_blank" style="color:var(--primary)">Nagesha LinkedIn</a></li>
+  </ul>
+  <form id="contactForm">
+    <label>Name</label><input type="text" name="name" required>
+    <label>Email</label><input type="email" name="email" required>
+    <label>Message</label><textarea name="message" rows="4" required></textarea>
+    <button type="submit">Send Message</button>
+  </form>
+  <div class="success" id="formMsg"></div>
+</section>
+</main>
+
+<footer>&copy; 2025 Nagesha G. All rights reserved.</footer>
+
+<script>
+// Animate sections
+const sections = document.querySelectorAll('section');
+const observer = new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){entry.target.classList.add('active');}
+  });
+},{threshold:0.2});
+sections.forEach(section=>observer.observe(section));
+
+// Contact form
+document.getElementById('contactForm').addEventListener('submit',function(e){
+  e.preventDefault();
+  document.getElementById('formMsg').innerText='Message sent! Thank you.';
+  this.reset();
+});
+
+// Dark/Light toggle
+const toggler = document.getElementById('themeToggler');
+let dark = true;
+toggler.onclick = () => {
+  dark = !dark;
+  document.body.style.background = dark ? 
+    "linear-gradient(130deg,#171d29 0%,#232f3e 100%)" :
+    "linear-gradient(130deg,#f4f8ff 0%,#dde7f7 100%)";
+
+  document.querySelectorAll('section').forEach(el =>
+    el.style.background = dark ? "rgba(30,38,51,0.85)" : "rgba(250,251,254,0.87)"
+  );
+
+  document.querySelectorAll('h1,h2,h3').forEach(el =>
+    el.style.color = dark ? "var(--secondary)" : "#1a1a1a"
+  );
+
+  document.querySelectorAll('.item-title').forEach(el =>
+    el.style.color = dark ? "var(--primary)" : "#0b3d91"
+  );
+
+  document.querySelectorAll('.subtext, .item-details, .edu-list li, form label').forEach(el =>
+    el.style.color = dark ? "var(--subdued)" : "#333"
+  );
+
+  document.querySelectorAll('.progress-bg').forEach(el =>
+    el.style.background = dark ? "#232f3e" : "#c8d8fa"
+  );
+
+  toggler.innerHTML = dark ? '🌙' : '☀️';
+}
+
+// Hamburger Menu toggle
+const hamburgerBtn = document.getElementById('hamburgerBtn');
+const menuDropdown = document.getElementById('menuDropdown');
+hamburgerBtn.onclick = () => {
+  menuDropdown.style.display = menuDropdown.style.display === 'flex' ? 'none' : 'flex';
+}
+</script>
+</body>
+</html>
